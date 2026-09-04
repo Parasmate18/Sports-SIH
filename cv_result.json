@@ -1,0 +1,17 @@
+﻿{
+    "athlete_id": "ATHLETE_001",
+    "test": "pushup",
+    "timestamp": "",
+    "person_detected": true,
+    "frames_processed": 0,
+    "valid_reps": 0,
+    "features": {
+        "min_elbow_angle": 0,
+        "max_elbow_angle": 0,
+        "min_knee_angle": 0,
+        "max_knee_angle": 0,
+        "min_body_angle": 0,
+        "max_body_angle": 0
+    },
+    "status": "success"
+}
