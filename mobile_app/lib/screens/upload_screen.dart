@@ -18,10 +18,13 @@ class Exercise {
 }
 
 const exercises = [
+  Exercise('pushup', 'Push-up'),
+  Exercise('squat', 'Squat'),
+  Exercise('deadlift', 'Deadlift'),
+  Exercise('running', '50 m Running'),
+  Exercise('situp', 'Sit-up'),
+  Exercise('plank', 'Plank'),
   Exercise('vertical_jump', 'Vertical Jump'),
-  Exercise('shuttle_run', 'Shuttle Run'),
-  Exercise('sit_ups', 'Sit-Ups'),
-  Exercise('sit_and_reach', 'Sit and Reach'),
 ];
 
 class UploadScreen extends StatefulWidget {

@@ -18,14 +18,20 @@ class ResultsScreen extends StatelessWidget {
 
   String _exerciseLabel() {
     switch (result.exercise) {
+      case 'pushup':
+        return 'Push-up';
+      case 'squat':
+        return 'Squat';
+      case 'deadlift':
+        return 'Deadlift';
+      case 'running':
+        return '50 m Running';
+      case 'situp':
+        return 'Sit-up';
+      case 'plank':
+        return 'Plank';
       case 'vertical_jump':
         return 'Vertical Jump';
-      case 'shuttle_run':
-        return 'Shuttle Run';
-      case 'sit_ups':
-        return 'Sit-Ups';
-      case 'sit_and_reach':
-        return 'Sit and Reach';
       default:
         return result.exercise;
     }
