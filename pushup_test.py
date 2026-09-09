@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 
 from pose_detector import PoseDetector
-from tests.pushup import PushUpAnalyzer
+from pushup import PushUpAnalyzer
 
 
 detector = PoseDetector()
@@ -20,6 +20,7 @@ min_elbow_angle = 180
 max_elbow_angle = 0
 
 frames_processed = 0
+person_detected = False
 
 window = "SIH25073 - Push-up CV Test"
 
@@ -54,7 +55,7 @@ while camera.isOpened():
 
 
     if result.pose_landmarks:
-
+        person_detected = True
         landmarks = result.pose_landmarks[0]
 
         data = analyzer.analyze(
@@ -65,9 +66,9 @@ while camera.isOpened():
         # Collect elbow angle
         # -----------------------------
 
-        if "elbow_angle" in data:
+        if "angle" in data:
 
-            angle = data["elbow_angle"]
+            angle = data["angle"]
 
             min_elbow_angle = min(
                 min_elbow_angle,
@@ -141,11 +142,11 @@ while camera.isOpened():
             )
 
 
-        if "elbow_angle" in data:
+        if "angle" in data:
 
             cv2.putText(
                 frame,
-                f"ELBOW: {int(data['elbow_angle'])}",
+                f"ELBOW: {int(data["angle"])}",
                 (40, 200),
                 cv2.FONT_HERSHEY_SIMPLEX,
                 0.9,
@@ -208,7 +209,7 @@ result_data = {
 
     "timestamp": datetime.now().isoformat(),
 
-    "person_detected": frames_processed > 0,
+    "person_detected": person_detected,
 
     "frames_processed": frames_processed,
 
