@@ -1,0 +1,91 @@
+{
+  "model_name": "Random Forest talent-level classifier",
+  "version": "1.2.0",
+  "training_date": "2026-08-31T17:13:53.829758+00:00",
+  "input_feature_names": [
+    "age",
+    "gender",
+    "height_cm",
+    "weight_kg",
+    "pushup_count",
+    "squat_count",
+    "deadlift_reps",
+    "running_50m_seconds",
+    "situp_count",
+    "plank_duration_seconds",
+    "vertical_jump_cm"
+  ],
+  "assessment_exercises": [
+    "Push-ups",
+    "Squats",
+    "Deadlift repetitions",
+    "50-metre running",
+    "Sit-ups",
+    "Plank",
+    "Vertical jump"
+  ],
+  "target_classes": [
+    "Beginner",
+    "Intermediate",
+    "Advanced",
+    "Elite"
+  ],
+  "training_record_count": 64,
+  "testing_record_count": 16,
+  "random_state": 42,
+  "class_weight": "balanced",
+  "feature_importance": [
+    {
+      "feature": "running_50m_seconds",
+      "importance": 0.231389
+    },
+    {
+      "feature": "plank_duration_seconds",
+      "importance": 0.207402
+    },
+    {
+      "feature": "deadlift_reps",
+      "importance": 0.142744
+    },
+    {
+      "feature": "vertical_jump_cm",
+      "importance": 0.141792
+    },
+    {
+      "feature": "squat_count",
+      "importance": 0.09967
+    },
+    {
+      "feature": "situp_count",
+      "importance": 0.083644
+    },
+    {
+      "feature": "pushup_count",
+      "importance": 0.062778
+    },
+    {
+      "feature": "height_cm",
+      "importance": 0.010223
+    },
+    {
+      "feature": "weight_kg",
+      "importance": 0.009635
+    },
+    {
+      "feature": "age",
+      "importance": 0.007182
+    },
+    {
+      "feature": "gender_Male",
+      "importance": 0.001559
+    },
+    {
+      "feature": "gender_Female",
+      "importance": 0.001161
+    },
+    {
+      "feature": "gender_Other",
+      "importance": 0.000821
+    }
+  ]
+}

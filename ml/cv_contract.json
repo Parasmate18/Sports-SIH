@@ -1,0 +1,18 @@
+{
+  "contract_version": "2.0",
+  "cv_session_file": "cv_module/session_results.json",
+  "m1_required_cv_measurements": {
+    "pushup": "measurement.pushup_count",
+    "squat": "measurement.squat_count",
+    "deadlift": "measurement.deadlift_reps",
+    "running": "measurement.running_50m_seconds",
+    "situp": "measurement.situp_count",
+    "plank": "measurement.plank_duration_seconds",
+    "vertical_jump": "measurement.vertical_jump_cm"
+  },
+  "profile_fields_not_measured_by_cv": ["age", "gender", "height_cm", "weight_kg"],
+  "quality_rule": "M1 ignores an exercise result whose status is not SUCCESS/OK/COMPLETE.",
+  "running_note": "A physically measured 50 m course is required. The current implementation uses operator S/F timing with CV movement/step validation; a single laptop camera cannot independently verify 50 m distance.",
+  "vertical_jump_note": "Single-camera jump height is calibrated from athlete height and is an estimate. Validate against a measured reference before official use.",
+  "deadlift_note": "Use an expert-approved standard load, correct equipment, and trained supervision."
+}
