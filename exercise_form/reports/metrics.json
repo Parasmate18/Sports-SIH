@@ -1,0 +1,100 @@
+{
+  "accuracy": 1.0,
+  "weighted_precision": 1.0,
+  "weighted_recall": 1.0,
+  "weighted_f1": 1.0,
+  "classification_report": {
+    "correct": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 12.0
+    },
+    "incorrect": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 12.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 24.0
+    },
+    "weighted avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 24.0
+    }
+  },
+  "feature_importance": [
+    {
+      "feature": "visibility_score",
+      "importance": 0.249219
+    },
+    {
+      "feature": "torso_deviation_degrees",
+      "importance": 0.205156
+    },
+    {
+      "feature": "stability_score",
+      "importance": 0.194016
+    },
+    {
+      "feature": "landmark_confidence",
+      "importance": 0.18183
+    },
+    {
+      "feature": "range_of_motion_degrees",
+      "importance": 0.068825
+    },
+    {
+      "feature": "primary_joint_max_angle",
+      "importance": 0.049327
+    },
+    {
+      "feature": "primary_joint_min_angle",
+      "importance": 0.027879
+    },
+    {
+      "feature": "assessment_duration_seconds",
+      "importance": 0.016223
+    },
+    {
+      "feature": "movement_speed",
+      "importance": 0.005064
+    },
+    {
+      "feature": "exercise_type_plank",
+      "importance": 0.001427
+    },
+    {
+      "feature": "exercise_type_vertical_jump",
+      "importance": 0.000473
+    },
+    {
+      "feature": "exercise_type_squat",
+      "importance": 0.000379
+    },
+    {
+      "feature": "exercise_type_deadlift",
+      "importance": 0.000125
+    },
+    {
+      "feature": "exercise_type_situp",
+      "importance": 3.6e-05
+    },
+    {
+      "feature": "exercise_type_running",
+      "importance": 2.1e-05
+    },
+    {
+      "feature": "exercise_type_pushup",
+      "importance": 0.0
+    }
+  ],
+  "warning": "Synthetic demonstration form data only; metrics do not establish real-world exercise-form accuracy."
+}

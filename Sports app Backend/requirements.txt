@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+pydantic
+pydantic-settings
+oracledb
+pwdlib[argon2]
+pyjwt
+python-multipart
+opencv-python
+mediapipe

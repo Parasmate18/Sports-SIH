@@ -1,0 +1,13 @@
+athlete_id,video_id,rep_number,exercise_type,min_elbow_angle,max_elbow_angle,mean_body_angle,hip_deviation,range_of_motion,rep_duration,movement_speed,landmark_confidence,visibility_score,label
+A001,V001,1,pushup,72,168,175,4,96,1.8,0.62,0.96,0.97,correct
+A001,V001,2,pushup,110,150,154,21,40,1.1,0.85,0.81,0.84,incorrect
+A002,V002,1,pushup,77,166,172,7,89,2.0,0.55,0.93,0.95,correct
+A002,V002,2,pushup,105,148,150,24,43,1.2,0.88,0.78,0.80,incorrect
+A003,V003,1,pushup,80,170,174,6,90,1.7,0.66,0.94,0.96,correct
+A003,V003,2,pushup,118,153,158,19,35,1.0,0.92,0.82,0.85,incorrect
+A004,V004,1,pushup,74,165,176,5,91,1.9,0.59,0.97,0.98,correct
+A004,V004,2,pushup,108,151,156,22,43,1.3,0.81,0.80,0.83,incorrect
+A005,V005,1,pushup,78,169,173,8,91,1.6,0.70,0.92,0.94,correct
+A005,V005,2,pushup,115,149,152,25,34,1.1,0.90,0.76,0.79,incorrect
+A006,V006,1,pushup,76,167,175,5,91,1.8,0.64,0.95,0.96,correct
+A006,V006,2,pushup,112,152,155,20,40,1.2,0.86,0.79,0.82,incorrect
