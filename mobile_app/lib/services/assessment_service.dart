@@ -33,7 +33,7 @@ class FinalAssessmentResult {
   });
 }
 
-const String assessmentBaseUrl = 'http://127.0.0.1:8000';
+const String assessmentBaseUrl = 'http://172.16.239.150:8000';
 
 
 // ==========================================================

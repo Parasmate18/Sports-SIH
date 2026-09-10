@@ -40,7 +40,7 @@ class AnalysisException implements Exception {
   AnalysisException(this.message);
 }
 
-const String analysisBaseUrl = 'http://127.0.0.1:8000';
+const String analysisBaseUrl = 'http://172.16.239.150:8000';
 
 Future<AnalysisResult> analyzeVideo({
   required XFile file,

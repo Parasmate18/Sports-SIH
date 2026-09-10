@@ -54,42 +54,46 @@ class ResultsScreen extends StatelessWidget {
   }
 
   Widget _infoCard({
-    required String label,
-    required String value,
-  }) {
-    return Container(
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: AppColors.bgSurface,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: AppColors.borderSubtle,
-        ),
+  required String label,
+  required String value,
+}) {
+  return Container(
+    padding: const EdgeInsets.all(14),
+    decoration: BoxDecoration(
+      color: AppColors.bgSurface,
+      borderRadius: BorderRadius.circular(8),
+      border: Border.all(
+        color: AppColors.borderSubtle,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            label,
-            style: const TextStyle(
-              color: AppColors.textMuted,
-              fontSize: 11,
-            ),
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(
+            color: AppColors.textMuted,
+            fontSize: 11,
           ),
-          const SizedBox(height: 6),
-          Text(
+        ),
+        const SizedBox(height: 6),
+        Flexible(
+          child: Text(
             value,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               color: AppColors.textPrimary,
-              fontSize: 16,
+              fontSize: 15,
               fontWeight: FontWeight.w700,
             ),
           ),
-        ],
-      ),
-    );
-  }
-
+        ),
+      ],
+    ),
+  );
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -186,7 +190,7 @@ class ResultsScreen extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
-                childAspectRatio: 1.8,
+                childAspectRatio: 1.35,
                 children: [
                   _infoCard(
                     label: 'Assessment ID',
@@ -201,9 +205,9 @@ class ResultsScreen extends StatelessWidget {
                     value: _formatValue(result.measurement),
                   ),
                   _infoCard(
-                    label: 'Video',
-                    value: result.fileName,
-                  ),
+                      label: 'Video',
+                      value: 'Uploaded',
+                    ),
                 ],
               ),
 

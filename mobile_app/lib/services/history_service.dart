@@ -86,7 +86,7 @@ class AssessmentHistoryResponse {
   });
 }
 
-const String historyBaseUrl = 'http://127.0.0.1:8000';
+const String historyBaseUrl = 'http://172.16.239.150:8000';
 
 Future<AssessmentHistoryResponse> fetchAssessmentHistory({
   required String token,
