@@ -29,8 +29,8 @@ def pushup_false_positive_check():
 
 def pushup_cycle_check():
     a = PushUpAnalyzer()
-    up = frame({12:(0.30,0.50),14:(0.25,0.60),16:(0.19,0.68),24:(0.55,0.50),28:(0.80,0.50)})
-    down = frame({12:(0.30,0.50),14:(0.30,0.60),16:(0.40,0.60),24:(0.55,0.50),28:(0.80,0.50)})
+    up = frame({12:(0.30,0.50),14:(0.25,0.60),16:(0.19,0.68),24:(0.55,0.51),28:(0.80,0.50)})
+    down = frame({12:(0.30,0.50),14:(0.30,0.60),16:(0.40,0.60),24:(0.55,0.51),28:(0.80,0.50)})
     a.analyze(up); a.analyze(down); a.analyze(up)
     assert a.reps == 1, f'Expected one complete push-up cycle, got {a.reps}'
 
