@@ -200,31 +200,254 @@ class FinalResultScreen extends StatelessWidget {
     );
   }
 
+  Widget _coachCard(
+    Map<String, dynamic> coach,
+  ) {
+    final name =
+        coach['name']?.toString() ?? '-';
+
+    final organization =
+        coach['organization']?.toString() ?? '-';
+
+    final certification =
+        coach['certification_level']?.toString() ?? '-';
+
+    final experience =
+        coach['experience_years']?.toString() ?? '-';
+
+    final state =
+        coach['state']?.toString() ?? '-';
+
+    final district =
+        coach['district']?.toString() ?? '-';
+
+    final phone =
+        coach['phone']?.toString() ?? '-';
+
+    final email =
+        coach['email']?.toString() ?? '-';
+
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(
+        bottom: 12,
+      ),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.bgSurface,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: AppColors.borderSubtle,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(
+                Icons.person_outline,
+                color: AppColors.accentPose,
+                size: 24,
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  name,
+                  style: const TextStyle(
+                    color: AppColors.textPrimary,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 14),
+
+          Row(
+            children: [
+              const Icon(
+                Icons.business_outlined,
+                color: AppColors.textMuted,
+                size: 18,
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  organization,
+                  style: const TextStyle(
+                    color: AppColors.textMuted,
+                    fontSize: 13,
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 10),
+
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Icon(
+                Icons.workspace_premium_outlined,
+                color: AppColors.textMuted,
+                size: 18,
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  certification,
+                  style: const TextStyle(
+                    color: AppColors.textPrimary,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 10),
+
+          Row(
+            children: [
+              const Icon(
+                Icons.timeline_outlined,
+                color: AppColors.textMuted,
+                size: 18,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                '$experience Years Experience',
+                style: const TextStyle(
+                  color: AppColors.textPrimary,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 10),
+
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Icon(
+                Icons.location_on_outlined,
+                color: AppColors.textMuted,
+                size: 18,
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  '$district, $state',
+                  style: const TextStyle(
+                    color: AppColors.textMuted,
+                    fontSize: 13,
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 10),
+
+          Row(
+            children: [
+              const Icon(
+                Icons.phone_outlined,
+                color: AppColors.textMuted,
+                size: 18,
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  phone,
+                  style: const TextStyle(
+                    color: AppColors.textPrimary,
+                    fontSize: 13,
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 10),
+
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Icon(
+                Icons.email_outlined,
+                color: AppColors.textMuted,
+                size: 18,
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  email,
+                  style: const TextStyle(
+                    color: AppColors.textPrimary,
+                    fontSize: 13,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final prediction = result.prediction;
     final features = result.features;
 
+    final recommendedCoaches =
+        result.recommendedCoaches;
+
+       debugPrint('RECOMMENDED COACHES: $recommendedCoaches');
+       debugPrint('COACH COUNT: ${recommendedCoaches.length}');   
+
     final strengths =
-        List<dynamic>.from(prediction['strengths'] ?? []);
+        List<dynamic>.from(
+      prediction['strengths'] ?? [],
+    );
 
     final needsImprovement =
-        List<dynamic>.from(prediction['needs_improvement'] ?? []);
+        List<dynamic>.from(
+      prediction['needs_improvement'] ?? [],
+    );
 
     final talentLevel =
-        prediction['talent_level']?.toString() ?? '-';
+        prediction['talent_level']
+                ?.toString() ??
+            '-';
 
     final confidence =
-        _formatConfidence(prediction['confidence']);
+        _formatConfidence(
+      prediction['confidence'],
+    );
 
     final recommendedSport =
-        prediction['recommended_sport']?.toString() ?? '-';
+        prediction['recommended_sport']
+                ?.toString() ??
+            '-';
 
     final modelVersion =
-        prediction['model_version']?.toString() ?? '-';
+        prediction['model_version']
+                ?.toString() ??
+            '-';
 
     final warning =
-        prediction['warning']?.toString() ?? '';
+        prediction['warning']
+                ?.toString() ??
+            '';
 
     return Scaffold(
       backgroundColor: AppColors.bgBase,
@@ -242,42 +465,59 @@ class FinalResultScreen extends StatelessWidget {
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment:
+                CrossAxisAlignment.start,
             children: [
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.all(18),
+                padding:
+                    const EdgeInsets.all(18),
                 decoration: BoxDecoration(
                   color: AppColors.bgSurface,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius:
+                      BorderRadius.circular(12),
                   border: Border.all(
-                    color: AppColors.accentPose,
+                    color:
+                        AppColors.accentPose,
                   ),
                 ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment:
+                      CrossAxisAlignment.start,
                   children: [
                     const Text(
                       'Assessment Completed',
                       style: TextStyle(
-                        color: AppColors.textMuted,
+                        color:
+                            AppColors.textMuted,
                         fontSize: 13,
                       ),
                     ),
-                    const SizedBox(height: 8),
+
+                    const SizedBox(
+                      height: 8,
+                    ),
+
                     Text(
                       talentLevel,
                       style: const TextStyle(
-                        color: AppColors.textPrimary,
+                        color:
+                            AppColors.textPrimary,
                         fontSize: 30,
-                        fontWeight: FontWeight.w800,
+                        fontWeight:
+                            FontWeight.w800,
                       ),
                     ),
-                    const SizedBox(height: 8),
+
+                    const SizedBox(
+                      height: 8,
+                    ),
+
                     Text(
                       'Confidence: $confidence',
                       style: const TextStyle(
-                        color: AppColors.textMuted,
+                        color:
+                            AppColors.textMuted,
                         fontSize: 14,
                       ),
                     ),
@@ -287,10 +527,13 @@ class FinalResultScreen extends StatelessWidget {
 
               const SizedBox(height: 24),
 
-              _sectionTitle('Prediction'),
+              _sectionTitle(
+                'Prediction',
+              ),
 
               _infoCard(
-                label: 'Recommended Sport',
+                label:
+                    'Recommended Sport',
                 value: recommendedSport,
                 icon: Icons.sports,
               ),
@@ -309,51 +552,107 @@ class FinalResultScreen extends StatelessWidget {
               ),
 
               _listCard(
-                title: 'Needs Improvement',
+                title:
+                    'Needs Improvement',
                 items: needsImprovement,
               ),
 
               const SizedBox(height: 10),
 
-              _sectionTitle('Assessment Features'),
+              _sectionTitle(
+                'Assessment Features',
+              ),
 
               ...features.entries.map(
                 (entry) => _infoCard(
-                  label: _featureLabel(entry.key),
-                  value: _formatFeature(
+                  label:
+                      _featureLabel(
+                    entry.key,
+                  ),
+                  value:
+                      _formatFeature(
                     entry.key,
                     entry.value,
                   ),
                 ),
               ),
 
+              // ============================
+              // RECOMMENDED COACHES
+              // ============================
+
+              const SizedBox(height: 24),
+
+              _sectionTitle(
+                'Recommended Coaches',
+              ),
+
+              if (recommendedCoaches.isEmpty)
+                 Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(14),
+                  child: Text(
+                    'No coaches available for this athlete level.',
+                    style: TextStyle(
+                      color:
+                          AppColors.textMuted,
+                    ),
+                  ),
+                )
+              else
+                ...recommendedCoaches.map(
+                  (coach) =>
+                      _coachCard(coach),
+                ),
+
+              // ============================
+              // IMPORTANT NOTICE
+              // ============================
+
               if (warning.isNotEmpty) ...[
                 const SizedBox(height: 14),
+
                 Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.all(14),
-                  decoration: BoxDecoration(
-                    color: AppColors.bgSurface,
-                    borderRadius: BorderRadius.circular(10),
+                  padding:
+                      const EdgeInsets.all(14),
+                  decoration:
+                      BoxDecoration(
+                    color:
+                        AppColors.bgSurface,
+                    borderRadius:
+                        BorderRadius.circular(
+                      10,
+                    ),
                     border: Border.all(
-                      color: AppColors.borderSubtle,
+                      color:
+                          AppColors.borderSubtle,
                     ),
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment:
+                        CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Important Notice',
                         style: TextStyle(
-                          color: AppColors.textPrimary,
-                          fontWeight: FontWeight.w700,
+                          color:
+                              AppColors.textPrimary,
+                          fontWeight:
+                              FontWeight.w700,
                         ),
                       ),
-                      const SizedBox(height: 8),
+
+                      const SizedBox(
+                        height: 8,
+                      ),
+
                       Text(
                         warning,
-                        style: const TextStyle(
-                          color: AppColors.textMuted,
+                        style:
+                            const TextStyle(
+                          color:
+                              AppColors.textMuted,
                           fontSize: 12,
                         ),
                       ),
@@ -368,22 +667,33 @@ class FinalResultScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.of(context)
+                        .pop();
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.accentTrack,
-                    padding: const EdgeInsets.symmetric(
+                  style:
+                      ElevatedButton.styleFrom(
+                    backgroundColor:
+                        AppColors.accentTrack,
+                    padding:
+                        const EdgeInsets
+                            .symmetric(
                       vertical: 15,
                     ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                    shape:
+                        RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(
+                        8,
+                      ),
                     ),
                   ),
                   child: const Text(
                     'Back to Assessment',
                     style: TextStyle(
-                      color: AppColors.textOnAccent,
-                      fontWeight: FontWeight.w700,
+                      color:
+                          AppColors.textOnAccent,
+                      fontWeight:
+                          FontWeight.w700,
                     ),
                   ),
                 ),

@@ -89,6 +89,68 @@ def get_athlete_height_cm(user_id: int):
 
 
 # ==========================================================
+# Helper: Get recommended coaches by athlete talent level
+# ==========================================================
+
+def get_recommended_coaches(cursor, talent_level: str):
+    if not talent_level:
+        return []
+
+    normalized_level = talent_level.strip().upper()
+
+    cursor.execute(
+        """
+        SELECT
+            ID,
+            USER_ID,
+            NAME,
+            PHONE,
+            EMAIL,
+            ORGANIZATION,
+            CERTIFICATION_LEVEL,
+            EXPERIENCE_YEARS,
+            STATE,
+            DISTRICT,
+            TARGET_LEVEL
+        FROM SYSTEM.COACHES
+        WHERE UPPER(TARGET_LEVEL) = :talent_level
+        ORDER BY EXPERIENCE_YEARS DESC, NAME ASC
+        FETCH FIRST 3 ROWS ONLY
+        """,
+        {
+            "talent_level": normalized_level
+        },
+    )
+
+    rows = cursor.fetchall()
+
+    coaches = []
+
+    for row in rows:
+        coaches.append(
+            {
+                "id": row[0],
+                "user_id": row[1],
+                "name": row[2],
+                "phone": row[3],
+                "email": row[4],
+                "organization": row[5],
+                "certification_level": row[6],
+                "experience_years": (
+                    int(row[7])
+                    if row[7] is not None
+                    else 0
+                ),
+                "state": row[8],
+                "district": row[9],
+                "target_level": row[10],
+            }
+        )
+
+    return coaches
+
+
+# ==========================================================
 # CREATE NEW ASSESSMENT
 # ==========================================================
 
@@ -614,12 +676,18 @@ def get_assessment_result(
                 "a safe standard load under trained supervision."
             ),
         }
+        # 4. Get recommended coaches based on predicted talent level.
+        recommended_coaches = get_recommended_coaches(
+        cursor=cursor,
+        talent_level=prediction["talent_level"],
+            )
 
         return {
             "assessment_id": assessment_id,
             "status": assessment_status,
             "features": features,
             "prediction": prediction,
+            "recommended_coaches": recommended_coaches,
         }
 
     except HTTPException:
