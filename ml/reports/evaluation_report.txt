@@ -1,0 +1,59 @@
+SIH25073 - Talent-Level Model Evaluation
+=============================================
+Evaluation date (UTC): 2026-08-31T17:13:56.929186+00:00
+Total cleaned records: 80
+Held-out test records: 16
+Random state: 42
+Assessment exercises: Push-ups, Squats, Deadlift repetitions, 50-metre running, Sit-ups, Plank, Vertical jump
+
+Held-out metrics
+--------------------
+Accuracy:           1.0000
+Weighted precision: 1.0000
+Weighted recall:    1.0000
+Weighted F1-score:  1.0000
+
+Classification report
+------------------------
+              precision    recall  f1-score   support
+
+    Beginner     1.0000    1.0000    1.0000         4
+Intermediate     1.0000    1.0000    1.0000         4
+    Advanced     1.0000    1.0000    1.0000         4
+       Elite     1.0000    1.0000    1.0000         4
+
+    accuracy                         1.0000        16
+   macro avg     1.0000    1.0000    1.0000        16
+weighted avg     1.0000    1.0000    1.0000        16
+
+Confusion matrix (rows=true, columns=predicted)
+------------------------------------------------
+Labels: ['Beginner', 'Intermediate', 'Advanced', 'Elite']
+[[4 0 0 0]
+ [0 4 0 0]
+ [0 0 4 0]
+ [0 0 0 4]]
+
+Cross-validation (weighted F1-score)
+---------------------------------------
+Fold scores: 1.0000, 1.0000, 1.0000, 1.0000, 0.8667
+Mean: 0.9733
+Standard deviation: 0.0533
+
+Top feature importance values
+-----------------------------
+running_50m_seconds: 0.231389
+plank_duration_seconds: 0.207402
+deadlift_reps: 0.142744
+vertical_jump_cm: 0.141792
+squat_count: 0.099670
+situp_count: 0.083644
+pushup_count: 0.062778
+height_cm: 0.010223
+weight_kg: 0.009635
+age: 0.007182
+
+Warnings and interpretation
+---------------------------
+- The bundled athlete_data.csv is synthetic demonstration data; these metrics do not measure real-world sports-talent accuracy.
+- The dataset has fewer than 200 records, so the held-out metrics have high uncertainty and must not be used for official claims.
