@@ -24,12 +24,14 @@ class FinalAssessmentResult {
 
   final Map<String, dynamic> features;
   final Map<String, dynamic> prediction;
+  final List<Map<String, dynamic>> recommendedCoaches;
 
   FinalAssessmentResult({
     required this.assessmentId,
     required this.status,
     required this.features,
     required this.prediction,
+    required this.recommendedCoaches,
   });
 }
 
@@ -144,15 +146,20 @@ Future<FinalAssessmentResult> finalizeAssessment({
 
     if (response.statusCode == 200) {
       return FinalAssessmentResult(
-        assessmentId: body['assessment_id'],
-        status: body['status'],
-        features: Map<String, dynamic>.from(
-          body['features'] ?? {},
-        ),
-        prediction: Map<String, dynamic>.from(
-          body['prediction'] ?? {},
-        ),
-      );
+    assessmentId: body['assessment_id'],
+    status: body['status'],
+    features: Map<String, dynamic>.from(
+    body['features'] ?? {},
+   ),
+    prediction: Map<String, dynamic>.from(
+    body['prediction'] ?? {},
+    ),
+    recommendedCoaches: List<Map<String, dynamic>>.from(
+    (body['recommended_coaches'] ?? []).map(
+      (coach) => Map<String, dynamic>.from(coach),
+     ),
+   ),
+  );
     }
 
     if (response.statusCode == 400) {
@@ -230,15 +237,20 @@ Future<FinalAssessmentResult> getSavedAssessmentResult({
 
     if (response.statusCode == 200) {
       return FinalAssessmentResult(
-        assessmentId: body['assessment_id'],
-        status: body['status'],
-        features: Map<String, dynamic>.from(
-          body['features'] ?? {},
-        ),
-        prediction: Map<String, dynamic>.from(
-          body['prediction'] ?? {},
-        ),
-      );
+     assessmentId: body['assessment_id'],
+     status: body['status'],
+    features: Map<String, dynamic>.from(
+    body['features'] ?? {},
+    ),
+    prediction: Map<String, dynamic>.from(
+    body['prediction'] ?? {},
+    ),
+    recommendedCoaches: List<Map<String, dynamic>>.from(
+    (body['recommended_coaches'] ?? []).map(
+      (coach) => Map<String, dynamic>.from(coach),
+    ),
+  ),
+);
     }
 
     if (response.statusCode == 401) {
